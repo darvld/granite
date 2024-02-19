@@ -1,0 +1,9 @@
+[*.*]
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+
+[*.kt]
+ij_kotlin_field_annotation_wrap = off
+ij_kotlin_method_annotation_wrap = off
+ij_kotlin_class_annotation_wrap = off

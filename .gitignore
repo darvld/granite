@@ -1,0 +1,10 @@
+# IDE configuration and local files
+.fleet/
+.idea/
+.vscode/
+.local/
+
+# Gradle build files
+.gradle
+build
+local.properties

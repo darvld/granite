@@ -1,0 +1,35 @@
+[versions]
+granite = "0.1.0-SNAPSHOT"
+
+kotlin = "1.9.10"
+kotlinx-coroutines = "1.7.3"
+
+# utils
+kotlinCompileTesting = "1.5.0"
+
+# plugin versions
+plugins-buildTimeTracker = "4.3.0"
+plugins-kotlinx-abiValidator = "0.13.2"
+plugins-buildconfig = "3.1.0"
+plugins-intellij = "1.16.1"
+
+[libraries]
+kotlin-compiler = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
+
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
+# Testing
+kotlinCompileTesting = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "kotlinCompileTesting" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinx-abiValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "plugins-kotlinx-abiValidator" }
+
+buildTimeTracker = { id = "com.asarkar.gradle.build-time-tracker", version.ref = "plugins-buildTimeTracker" }
+buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "plugins-buildconfig" }
+
+intellij = { id = "org.jetbrains.intellij", version.ref = "plugins-intellij" }
+
+# used in samples, published locally during pre-pass build
+granite = { id = "io.github.darvld.granite", version.ref = "granite" }

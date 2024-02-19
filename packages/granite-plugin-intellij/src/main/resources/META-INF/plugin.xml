@@ -1,0 +1,25 @@
+<idea-plugin>
+  <id>io.github.darvld.granite.plugin.intellij</id>
+  <name>Granite Engine Support</name>
+  <vendor email="dvaldespino00@gmail.com">darvld</vendor>
+
+  <description><![CDATA[
+    This plugin adds support for the Granite Kotlin Compiler plugin in Intellij-based IDEs.<br>
+    <a href="https://github.com/darvld/granite">Visit the GitHub repository for more information.</a>
+  ]]></description>
+
+  <depends>org.jetbrains.kotlin</depends>
+  <depends>com.intellij.modules.platform</depends>
+
+  <!-- register Kotlin Compiler plugin extensions -->
+  <extensions defaultExtensionNs="org.jetbrains.kotlin">
+    <syntheticResolveExtension
+      implementation="io.github.darvld.granite.intellij.ComponentTypeIntellijResolveExtension"
+      order="first"
+    />
+    <irGenerationExtension
+      implementation="io.github.darvld.granite.intellij.ComponentTypeIntellijGenerationExtension"
+      order="first"
+    />
+  </extensions>
+</idea-plugin>
