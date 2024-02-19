@@ -1,0 +1,24 @@
+{
+	"name": "Development",
+	"image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
+
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "none",
+			"installMaven": "false",
+			"installGradle": "false"
+		},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"moby": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "v2",
+			"installDockerBuildx": true
+		},
+		"ghcr.io/itsmechlark/features/act:1": {
+			"version": "latest"
+		}
+	},
+
+	// prepare the codebase for development on creation
+	"postCreateCommand": "make prepare"
+}

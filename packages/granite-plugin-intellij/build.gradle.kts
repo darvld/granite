@@ -33,5 +33,5 @@ repositories {
 }
 
 dependencies {
-  implementation(projects.packages.engine.granitePluginKotlin)
+  implementation(projects.packages.granitePluginKotlin)
 }

@@ -64,11 +64,11 @@ prepare-plugins:
 	$(prepass) $(gradle) \
 	:packages:granite-plugin-kotlin:publishToMavenLocal \
 	:packages:granite-plugin-gradle:publishToMavenLocal \
-	$(do_publish) $(do_sign)
+	$(do_publish)
 
 publish-local:
 	$(call heading,Publishing to MavenLocal...)
-	$(gradle) publishToMavenLocal $(do_publish) $(do_sign)
+	$(gradle) publishToMavenLocal $(do_publish)
 
 test:
 	$(call heading,Running test suite...)

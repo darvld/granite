@@ -21,7 +21,6 @@ subprojects {
   val childGroup = optionOrNull("subgroup")?.takeUnless { parentGroup?.endsWith(it) ?: true }
   group = listOfNotNull(parentGroup, childGroup).joinToString(".")
   
-  
   // configure projects after they are evaluated, this allows for certain extensions and plugins
   // like Java and Kotlin to be present at the time when our custom logic runs
   afterEvaluate {
