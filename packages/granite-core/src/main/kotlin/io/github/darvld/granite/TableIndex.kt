@@ -65,11 +65,13 @@ internal class TableIndex(initialSize: Int = 10) {
     // attempt to locate the table using the edges of the current one
     table.withComponent(component)?.let { return it }
 
-    // slower path, construct the new signature and try to locate using the index
+    // slower path: construct the new signature and try to locate using the index,
+    // slowest path: create a new table and add it to the index
     val signature = table.signature with component
-    index[signature.hash()]?.let { return it }
+    val result = index[signature.hash()] ?: newTable(signature, createWithSize)
 
-    // slowest path, create a new table and add it to the index
+    // update the edge (cache the result)
+    table.withComponent.register(component, result)
     return newTable(signature, createWithSize)
   }
 
@@ -85,12 +87,14 @@ internal class TableIndex(initialSize: Int = 10) {
     // attempt to locate the table using the edges of the current one
     table.withoutComponent(component)?.let { return it }
 
-    // slower path, construct the new signature and try to locate using the index
+    // slower path: construct the new signature and try to locate using the index,
+    // slowest path: create a new table and add it to the index
     val signature = table.signature without component
-    index[signature.hash()]?.let { return it }
+    val result = index[signature.hash()] ?: newTable(signature, createWithSize)
 
-    // slowest path, create a new table and add it to the index
-    return newTable(signature, createWithSize)
+    // update the edge (cache the result)
+    table.withoutComponent.register(component, result)
+    return result
   }
 
   /** Returns a thread-safe iterator that yields the values for every [Table] in the index. */
