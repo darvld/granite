@@ -1,7 +1,7 @@
-package io.github.darvld.granite.plugin.ir
+package io.github.darvld.granite.plugin.backend
 
 import io.github.darvld.granite.plugin.common.ComponentContext
-import io.github.darvld.granite.plugin.resolve.ComponentTypeResolveExtension
+import io.github.darvld.granite.plugin.frontend.k1.ComponentTypeResolveExtension
 import org.jetbrains.kotlin.backend.common.extensions.IrGenerationExtension
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.ir.declarations.IrModuleFragment

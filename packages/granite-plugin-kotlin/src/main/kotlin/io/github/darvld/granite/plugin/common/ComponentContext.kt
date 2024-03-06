@@ -1,15 +1,10 @@
 package io.github.darvld.granite.plugin.common
 
-import io.github.darvld.granite.plugin.ir.ComponentTypeGenerationExtension
-import io.github.darvld.granite.plugin.ir.ComponentTypeIrVisitor
 import org.jetbrains.kotlin.config.CompilerConfiguration
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * Context for component type generation. Use the [issueComponentId] method to claim an ID value during generation.
- *
- * @see ComponentTypeGenerationExtension
- * @see ComponentTypeIrVisitor
  */
 class ComponentContext(
   private val minComponentValue: Int,

@@ -1,7 +1,7 @@
-package io.github.darvld.granite.plugin.resolve
+package io.github.darvld.granite.plugin.frontend.k1
 
 import io.github.darvld.granite.plugin.common.Names
-import io.github.darvld.granite.plugin.ir.ComponentTypeGenerationExtension
+import io.github.darvld.granite.plugin.backend.ComponentTypeGenerationExtension
 import org.jetbrains.kotlin.descriptors.ClassDescriptor
 import org.jetbrains.kotlin.descriptors.PropertyDescriptor
 import org.jetbrains.kotlin.name.Name

@@ -1,10 +1,15 @@
 package io.github.darvld.granite.plugin
 
+import com.tschuchort.compiletesting.CompilationResult
+import com.tschuchort.compiletesting.JvmCompilationResult
 import com.tschuchort.compiletesting.KotlinCompilation
 import com.tschuchort.compiletesting.SourceFile
 import org.intellij.lang.annotations.Language
 import kotlin.test.assertEquals
-import com.tschuchort.compiletesting.KotlinCompilation.Result as CompilationResult
+
+/** Returns a [ClassLoader] capable of loading the compiled classes for JVM compilations. */
+val CompilationResult.classLoader: ClassLoader
+  get() = (this as JvmCompilationResult).classLoader
 
 /**
  * Prepare a [KotlinCompilation] with the [GraniteComponentPluginRegistrar], using a string [source] as part of a
@@ -17,7 +22,6 @@ fun prepareCompilation(@Language("kotlin") source: String): KotlinCompilation {
     sources = listOf(SourceFile.kotlin("main.kt", source))
     compilerPluginRegistrars = listOf(GraniteComponentPluginRegistrar())
     inheritClassPath = true
-    useIR = true
   }
 }
 
@@ -70,8 +74,8 @@ fun assertDoesNotCompile(
  *
  * @see assertCompiles
  */
-fun assertInvalidComponent(symbol: String, @Language("kotlin") declaration: String) {
-  assertDoesNotCompile(
+fun assertInvalidComponent(symbol: String, @Language("kotlin") declaration: String): CompilationResult {
+  return assertDoesNotCompile(
     source = prepareComponentDeclarationSource(symbol, declaration),
     message = "expected declaration to be an invalid component."
   )
@@ -83,11 +87,17 @@ fun assertInvalidComponent(symbol: String, @Language("kotlin") declaration: Stri
  *
  * @see assertCompiles
  */
-fun assertValidComponent(symbol: String, @Language("kotlin") declaration: String) {
-  assertCompiles(
+fun assertValidComponent(symbol: String, @Language("kotlin") declaration: String): CompilationResult {
+  // verify compile-time correctness of the generated declarations
+  val result = assertCompiles(
     source = prepareComponentDeclarationSource(symbol, declaration),
     message = "expected declaration to be a valid component."
   )
+
+  // verify that the component() function works as intended at runtime
+  result.classLoader.loadClass("MainKt").getMethod("component").invoke(null)
+
+  return result
 }
 
 private fun prepareComponentDeclarationSource(symbol: String, @Language("kotlin") declaration: String): String {
@@ -102,12 +112,12 @@ private fun prepareComponentDeclarationSource(symbol: String, @Language("kotlin"
 
     // entrypoint for assertions
     fun component(): Component {
-    return getComponentType($symbol)
+      return getComponentType($symbol)
     }
 
     // superinterface validation
     fun getComponentType(component: ComponentType<$symbol>): Component {
-    return component.type
+      return component.type
     }
   """
 }

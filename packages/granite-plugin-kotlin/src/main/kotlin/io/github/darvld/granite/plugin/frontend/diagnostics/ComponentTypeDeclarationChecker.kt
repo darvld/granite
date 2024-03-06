@@ -1,7 +1,7 @@
-package io.github.darvld.granite.plugin.diagnostics
+package io.github.darvld.granite.plugin.frontend.diagnostics
 
-import io.github.darvld.granite.plugin.resolve.ComponentTypeResolver
-import io.github.darvld.granite.plugin.resolve.isComponentDataCompanion
+import io.github.darvld.granite.plugin.frontend.k1.ComponentTypeResolver
+import io.github.darvld.granite.plugin.frontend.k1.isComponentDataCompanion
 import org.jetbrains.kotlin.descriptors.ClassDescriptor
 import org.jetbrains.kotlin.descriptors.DeclarationDescriptor
 import org.jetbrains.kotlin.psi.KtDeclaration

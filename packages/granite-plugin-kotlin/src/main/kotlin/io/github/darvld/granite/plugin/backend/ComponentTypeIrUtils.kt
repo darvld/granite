@@ -1,10 +1,11 @@
-package io.github.darvld.granite.plugin.ir
+package io.github.darvld.granite.plugin.backend
 
 import io.github.darvld.granite.plugin.common.ClassIds
 import io.github.darvld.granite.plugin.common.QualifiedNames
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.symbols.IrConstructorSymbol
+import org.jetbrains.kotlin.ir.symbols.UnsafeDuringIrConstructionAPI
 import org.jetbrains.kotlin.ir.util.constructors
 import org.jetbrains.kotlin.ir.util.hasAnnotation
 import org.jetbrains.kotlin.ir.util.parentAsClass
@@ -18,6 +19,7 @@ val IrClass.isComponentDataCompanion: Boolean
   get() = isCompanion && parentAsClass.hasAnnotation(QualifiedNames.componentDataAnnotation)
 
 /** Resolve a reference to the constructor of the `Component` value class. */
+@OptIn(UnsafeDuringIrConstructionAPI::class)
 fun IrPluginContext.resolveComponentConstructor(): IrConstructorSymbol {
   return referenceClass(ClassIds.componentValueClass)?.constructors?.single() ?: error(
     "Failed to resolve constructor for the Component class"

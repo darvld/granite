@@ -7,6 +7,7 @@ plugins {
 }
 
 kotlin {
+  compilerOptions.freeCompilerArgs.add("-Xcontext-receivers")
   compilerOptions.optIn.add("org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi")
 }
 

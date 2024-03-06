@@ -1,6 +1,5 @@
 package io.github.darvld.granite.plugin
 
-import io.github.darvld.granite.plugin.BuildConfig
 import io.github.darvld.granite.plugin.GraniteCommandLineProcessor.Companion.OPTION_MAX_ID
 import io.github.darvld.granite.plugin.GraniteCommandLineProcessor.Companion.OPTION_MIN_ID
 import io.github.darvld.granite.plugin.common.PluginConfiguration

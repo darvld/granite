@@ -1,11 +1,11 @@
 [versions]
 granite = "0.1.0-SNAPSHOT"
 
-kotlin = "1.9.10"
+kotlin = "2.0.0-Beta4"
 kotlinx-coroutines = "1.7.3"
 
 # utils
-kotlinCompileTesting = "1.5.0"
+kotlinCompileTesting = "0.5.0-alpha04"
 
 # plugin versions
 plugins-buildTimeTracker = "4.3.0"
@@ -20,7 +20,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 
 # Testing
-kotlinCompileTesting = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "kotlinCompileTesting" }
+kotlinCompileTesting = { module = "dev.zacsweers.kctfork:core", version.ref = "kotlinCompileTesting" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

@@ -1,4 +1,4 @@
-package io.github.darvld.granite.plugin.diagnostics
+package io.github.darvld.granite.plugin.frontend.diagnostics
 
 import org.jetbrains.kotlin.diagnostics.rendering.DefaultErrorMessages
 import org.jetbrains.kotlin.diagnostics.rendering.DiagnosticFactoryToRendererMap

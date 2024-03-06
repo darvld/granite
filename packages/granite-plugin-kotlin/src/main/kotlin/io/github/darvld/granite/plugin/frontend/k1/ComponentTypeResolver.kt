@@ -1,4 +1,4 @@
-package io.github.darvld.granite.plugin.resolve
+package io.github.darvld.granite.plugin.frontend.k1
 
 import io.github.darvld.granite.plugin.common.ClassIds
 import io.github.darvld.granite.plugin.common.Names
