@@ -1,11 +1,11 @@
 package io.github.darvld.granite.intellij
 
 import io.github.darvld.granite.plugin.common.ComponentContext
-import io.github.darvld.granite.plugin.ir.ComponentTypeGenerationExtension
+import io.github.darvld.granite.plugin.backend.ComponentTypeGenerationExtension
 
 /**
  * Extension used to install the Granite IR Generation extension into the Kotlin compiler used by the IDE. See the
- * documentatation in the original extension for details.
+ * documentation in the original extension for details.
  *
  * Instead of configurable component ID ranges, this extension uses the maximum available range, since generated
  * synthetic declarations are only used in the IDE.

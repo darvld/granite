@@ -11,7 +11,7 @@ import org.jetbrains.kotlin.fir.extensions.FirExtensionRegistrar
  *
  * See the main plugin extension registrar for an example on how to use this component with an adapter.
  */
-class FirComponentExtensionRegistrar : FirExtensionRegistrar() {
+open class FirComponentExtensionRegistrar : FirExtensionRegistrar() {
   override fun ExtensionRegistrarContext.configurePlugin() {
     +::FirComponentSupertypeExtension
     +::FirComponentGenerationExtension

@@ -26,6 +26,12 @@ tasks.patchPluginXml {
   version = option("version")
 }
 
+tasks.buildSearchableOptions {
+  // the Granite plugin has no searchable options, disable
+  // this task to improve build time
+  enabled = false
+}
+
 repositories {
   // due to an issue with the Intellij Gradle plugin, we need to re-declare repositories,
   // otherwise only the Intellij repo will be used and dependency resolution will fail

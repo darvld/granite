@@ -21,5 +21,9 @@
       implementation="io.github.darvld.granite.intellij.ComponentTypeIntellijGenerationExtension"
       order="first"
     />
+    <fir.extensions.firExtensionRegistrar
+      implementation="io.github.darvld.granite.intellij.ComponentTypeIntellijFirExtensionRegistrar"
+      order="first"
+    />
   </extensions>
 </idea-plugin>
